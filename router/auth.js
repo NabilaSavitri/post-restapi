@@ -70,6 +70,11 @@ router.post('/login', async (req, res) => {
         username: req.body.username
     })
     if (!user) return res.status(200).json(result(0, 'Your username is not registered!'))
+    //check password
+    const validPwd = await bcrypt.compare(req.body.password, user.paaword )
+    if (!validPwd) return res.status(200).json(result(0, 'Your password is wrong!'))
 
+    return res.status(200).json(result(1, 'Login User Success!', user))
 
 })
+module.exports = router
