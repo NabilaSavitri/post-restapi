@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         min: 6,
-        max: 255
+        max: 255 
     },
     created_date: {
         type: Date,
